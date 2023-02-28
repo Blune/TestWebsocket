@@ -81,6 +81,13 @@ ws.addEventListener('close', function (event){
 ws.addEventListener('message', function (event) {
     console.log(event.data);
     let data = JSON.parse(event.data);
+	
+	var a = document.createElement('a');
+      var linkText = document.createTextNode("link");
+      a.appendChild(linkText);
+      a.title = "my title text";
+      a.href = "/join?sessionId=" + data.sessionId;
+      document.body.appendChild(a);
 
     if(data.error.length > 0){
       document.getElementById("result").innerHTML = document.getElementById("result").innerText = data.error;
